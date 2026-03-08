@@ -1,0 +1,90 @@
+############################
+# OS: macOS
+############################
+.DS_Store
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
+.fseventsd
+
+############################
+# Go: build/test artifacts
+############################
+*.exe
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+*.prof
+*.pprof
+*.profile
+*.cover
+coverage.out
+cover.out
+coverage/
+
+# Common build output dirs
+bin/
+out/
+dist/
+build/
+tmp/
+temp/
+
+############################
+# Logs & runtime files
+############################
+*.log
+logs/
+*.pid
+
+############################
+# Editors & IDEs
+############################
+.idea/
+*.iml
+
+# VS Code: keep shared project files, ignore the rest
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+############################
+# Dependencies & modules
+############################
+# Do NOT ignore go.mod, go.sum, go.work, go.work.sum
+# If you do NOT commit vendored dependencies, uncomment the next line:
+# vendor/
+
+############################
+# Caches & misc
+############################
+.cache/
+
+############################
+# Local env/config (adjust as needed)
+############################
+.env
+.env.*.local
+*.local
+
+############################
+# Editor backups & temp files
+############################
+*~
+*.swp
+*.swo
+.#*
+
+############################
+# Optional local databases (uncomment if applicable)
+############################
+*.db
+*.sqlite
+*.sqlite3
+
