@@ -88,3 +88,4 @@ logs/
 *.sqlite
 *.sqlite3
 
+config/config.yaml
