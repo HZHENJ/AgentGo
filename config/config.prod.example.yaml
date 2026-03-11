@@ -1,0 +1,32 @@
+# Example production config (do NOT put secrets here)
+service:
+  app_mode: release
+  http_port: :8080
+
+database:
+  db_type: mysql
+  user: agentgo
+  password: "<set-in-real-config>"
+  host: mysql:3306
+  db_name: agentgo
+  charset: utf8mb4
+  parse_time: true
+  loc: Local
+
+redis:
+  redis_debug: false
+  redis_addr: redis:6379
+  redis_pw: "<set-in-real-config>"
+  redis_db_name: 2
+
+email:
+  host: smtp.qq.com
+  port: 587
+  user: <set-in-real-config>
+  password: "<set-in-real-config>"
+
+llm:
+  type: openai
+  api_key: "<set-in-real-config>"
+  base_url: https://api.openai.com/v1
+  model_name: gpt-4o

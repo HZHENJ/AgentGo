@@ -14,6 +14,7 @@ type Configuration struct {
 	Database Database `mapstructure:"database"`
 	Redis    Redis    `mapstructure:"redis"`
 	Email    Email    `mapstructure:"email"`
+	LLM      LLMConfig `mapstructure:"llm"`
 }
 
 type Service struct {
@@ -52,6 +53,18 @@ type RedisKeyConfig struct {
 
 var DefaultRedisKeyConfig = RedisKeyConfig{
 	CaptchaPrefix: "captcha:%s",
+}
+
+type LLMConfig struct {
+	Type      string `mapstructure:"type"`       // 服务商类型：如 "openai", "ollama", "deepseek"
+	APIKey    string `mapstructure:"api_key"`    // 你的密钥 (Ollama 通常不需要，但 OpenAI/DeepSeek 必须有)
+	BaseURL   string `mapstructure:"base_url"`   // 请求网关地址
+	ModelName string `mapstructure:"model_name"` // 具体使用的模型名，比如 "gpt-4o", "qwen-turbo"
+	
+	// 以下是一些可选的高级配置项，根据需要启用
+	// MaxTokens int    `mapstructure:"max_tokens"` // 限制 AI 最多吐多少个字，防止扣费破产
+	// Timeout   int    `mapstructure:"timeout"`    // 超时时间(秒)，防止 AI 卡死导致服务器 Goroutine 泄漏
+
 }
 
 func Init() {

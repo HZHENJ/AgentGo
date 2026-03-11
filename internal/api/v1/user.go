@@ -89,3 +89,25 @@ func UserLogout(c *gin.Context) {
 	}
 	app.Success(data)
 }
+
+// UserSendCaptcha sends a captcha to the specified email address.
+func UserSendCaptcha(c *gin.Context) {
+	app := ctl.NewWrapper(c)
+
+	var req types.SendCaptchaRequest
+	if err := c.ShouldBindJSON(&req); err != nil {
+		app.Error(e.INVALID_PARAMS, err)
+		return
+	}
+
+	userDao := dao.NewUserDao(db.DB)
+	userCacheDao := cache.NewUserCacheDao(redis.RDB)
+	userService := service.NewUserService(userDao, userCacheDao)
+
+	data, code := userService.SendCaptcha(c.Request.Context(), req.Email)
+	if code != e.SUCCESS {
+		app.Response(http.StatusOK, code, nil)
+		return
+	}
+	app.Success(data)
+}

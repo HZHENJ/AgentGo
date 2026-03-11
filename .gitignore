@@ -89,3 +89,6 @@ logs/
 *.sqlite3
 
 config/config.yaml
+config/config.prod.yaml
+
+deploy/redis-data/

@@ -12,6 +12,13 @@ var MsgFlags = map[int]string{
 	ERROR_USER_WRONG_PWD: "密码错误",
 	ERROR_INVALID_CAPTCHA: "验证码错误",
 	ERROR_SEND_EMAIL: "发送邮件失败",
+
+	// 300xx 会话 / 对话 / LLM
+	ERROR_SESSION_CREATE_FAIL:   "会话创建失败",
+	ERROR_HISTORY_LOAD_FAIL:     "历史记录加载失败",
+	ERROR_LLM_CREATE_FAIL:       "模型初始化失败",
+	ERROR_STREAM_RESPONSE_FAIL:  "流式响应失败",
+	ERROR_INVALID_MODEL_TYPE:    "无效的模型类型",
 }
 
 func GetMsg(code int) string {

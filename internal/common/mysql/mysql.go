@@ -59,5 +59,7 @@ func InitDB() error {
 func migration() error {
 	return DB.AutoMigrate(
 		&model.User{},
+		&model.Session{},
+		&model.Message{},
 	)
 }

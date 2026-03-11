@@ -1,0 +1,47 @@
+version: '3.7'
+
+networks:
+  agentgo_net:
+    driver: bridge
+    name: agentgo_network
+
+services:
+  mysql:
+    container_name: agent_mysql
+    image: mysql:latest
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=agentgo
+      - MYSQL_USER=agentgo
+      - MYSQL_PASSWORD=agentgo
+      - TZ=Asia/Shanghai
+    ports:
+      - "127.0.0.1:3306:3306"
+    networks:
+      - agentgo_net
+
+  agentgo-app:
+    container_name: agentgo-app
+    image: hzhenj/agentgo-server:latest
+    environment:
+      - APP_ENV=prod
+    restart: always
+    depends_on:
+      - mysql
+      - redis
+    ports:
+      - "8080:8080"
+    networks:
+      - agentgo_net
+
+  redis:
+    container_name: aggent_redis
+    image: redis:latest
+    restart: always
+    volumes:
+      - ./redis-data:/data
+    ports:
+      - "127.0.0.1:6379:6379"
+    networks:
+      - agentgo_net

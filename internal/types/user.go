@@ -27,3 +27,7 @@ type UserLoginResponse struct {
 	Token string `json:"token"`
 	User UserInfo `json:"user"`
 }
+
+type SendCaptchaRequest struct {
+	Email string `json:"email" binding:"required,email"`
+}
